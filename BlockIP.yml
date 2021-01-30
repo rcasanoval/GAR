@@ -1,0 +1,16 @@
+- hosts: webservers
+  become: yes
+  become_method: sudo
+  tasks:
+      
+      - name: copy access.conf file
+      copy: 
+        src: ./ 
+        dest: /home/admin/nginx/example.com 
+        owner: admin 
+        group: admin
+
+    - name: restart nginx
+      service:
+       name: nginx
+       state: restarted

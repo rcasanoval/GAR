@@ -1,0 +1,14 @@
+- hosts: webservers
+  become: yes
+  become_method: sudo
+  tasks:
+      
+      - name: Upgrade the OS
+      apt:
+        update_cahce: yes
+        upgrade: full
+        
+      - name: Update packages
+      apt: 
+        name: "*"
+        state: latest
